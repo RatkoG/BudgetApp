@@ -1,0 +1,32 @@
+$gradient:to right top,
+#005daa,
+#0075b8,
+#008cbe,
+#00a1be,
+#00b5ba,
+#00b8bb,
+#00bbbb,
+#00bebc,
+#00b2c4,
+#00a4ca,
+#0096cb,
+#0086c7;
+$white:#fff;
+$shadow:1px 3px 33px 5px rgba(0, 0, 0, 0.44);
+
+body {
+  background-image: linear-gradient($gradient);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  background: $white;
+  height: 40rem;
+  width: 60rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: $shadow;
+}
