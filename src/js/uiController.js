@@ -32,4 +32,14 @@ export const addListItem = (obj, type) => {
  	</div>`;
   const myFragment = document.createRange().createContextualFragment(myHTML);
   document.querySelector('.panel').appendChild(myFragment);
+
+  function clearFields() {
+    let fields, fieldsArr;
+    fields = document.querySelectorAll('.add__description, .add__value');
+    fieldsArr = Array.from(fields).forEach(field => {
+      field.value = '';
+    });
+    elements.inputDesc.focus();
+  }
+  clearFields();
 };
