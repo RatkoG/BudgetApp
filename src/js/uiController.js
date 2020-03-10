@@ -3,7 +3,11 @@ export const elements = {
   inputDesc: document.querySelector('.add__description'),
   inputValue: document.querySelector('.add__value'),
   inputBtn: document.querySelector('.add__btn'),
-  inputList: document.querySelector('.panel')
+  inputList: document.querySelector('.panel'),
+  budgetLabel: document.querySelector('.budget__value'),
+  incomeLabel: document.querySelector('.budget__income--value'),
+  expensesLabel: document.querySelector('.budget__expenses--value'),
+  percentageLabel: document.querySelector('.budget__expenses--percentage')
 };
 
 export const getInput = () => {
@@ -37,4 +41,15 @@ export const clearFields = function() {
     field.value = '';
   });
   elements.inputDesc.focus();
+};
+
+export const displayBudget = function(obj) {
+  elements.budgetLabel.textContent = obj.budget;
+  elements.incomeLabel.textContent = obj.totalInc;
+  elements.expensesLabel.textContent = obj.totalExp;
+  if (obj.percentage > 0) {
+    elements.percentageLabel.textContent = obj.percentage + '%';
+  } else {
+    elements.percentageLabel.textContent = '---';
+  }
 };

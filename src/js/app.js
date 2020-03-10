@@ -1,5 +1,11 @@
 import '../sass/main.scss';
-import { getInput, elements, addListItem, clearFields } from './uiController';
+import {
+  getInput,
+  elements,
+  addListItem,
+  clearFields,
+  displayBudget
+} from './uiController';
 import {
   Expense,
   Income,
@@ -21,6 +27,7 @@ const updateBudget = function() {
   calculateBudget();
   let budget = getBudget();
   console.log(budget);
+  displayBudget(budget);
 };
 
 let input, newItem;
@@ -33,5 +40,10 @@ const addItem = () => {
     updateBudget();
   }
 };
-
+displayBudget({
+  budget: 0,
+  totalIn: 0,
+  totalExp: 0,
+  percentage: -1
+});
 setupEventListeners();
