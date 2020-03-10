@@ -22,7 +22,9 @@ export const data = {
   total: {
     exp: 0,
     inc: 0
-  }
+  },
+  budget: 0,
+  percentage: -1
 };
 
 export const addValues = function(type, des, val) {
@@ -40,4 +42,32 @@ export const addValues = function(type, des, val) {
   }
   data.allValues[type].push(newItem);
   return newItem;
+};
+
+const calculateTotal = function(type) {
+  let sum = 0;
+  data.allValues[type].forEach(function(current) {
+    sum += current.value;
+  });
+  data.total[type] = sum;
+};
+
+export const calculateBudget = function() {
+  calculateTotal('exp');
+  calculateTotal('inc');
+  data.budget = data.total.inc - data.total.exp;
+  if (data.total.inc > 0) {
+    data.percentage = Math.round((data.total.exp / data.total.inc) * 100);
+  } else {
+    data.percentage = -1;
+  }
+};
+
+export const getBudget = function() {
+  return {
+    budget: data.budget,
+    totalInc: data.total.inc,
+    totalExp: data.total.exp,
+    percentage: data.percentage
+  };
 };

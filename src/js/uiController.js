@@ -7,16 +7,14 @@ export const elements = {
 };
 
 export const getInput = () => {
-  elements;
   return {
     type: elements.inputType.value,
     desc: elements.inputDesc.value,
-    value: elements.inputValue.value
+    value: parseFloat(elements.inputValue.value)
   };
 };
 
 export const addListItem = (obj, type) => {
-  //TODO: TESTING
   const myHTML = `<div class="panel__item panel__item-${
     type === 'inc' ? 'income' : 'expense'
   }" id="income-${obj.id}">
@@ -32,14 +30,11 @@ export const addListItem = (obj, type) => {
  	</div>`;
   const myFragment = document.createRange().createContextualFragment(myHTML);
   document.querySelector('.panel').appendChild(myFragment);
-
-  function clearFields() {
-    let fields, fieldsArr;
-    fields = document.querySelectorAll('.add__description, .add__value');
-    fieldsArr = Array.from(fields).forEach(field => {
-      field.value = '';
-    });
-    elements.inputDesc.focus();
-  }
-  clearFields();
+};
+export const clearFields = function() {
+  let fields = document.querySelectorAll('.add__description, .add__value');
+  fields = Array.from(fields).forEach(field => {
+    field.value = '';
+  });
+  elements.inputDesc.focus();
 };

@@ -1,6 +1,12 @@
 import '../sass/main.scss';
-import { getInput, elements, addListItem } from './uiController';
-import { Expense, Income, addValues } from './budgetController';
+import { getInput, elements, addListItem, clearFields } from './uiController';
+import {
+  Expense,
+  Income,
+  addValues,
+  calculateBudget,
+  getBudget
+} from './budgetController';
 
 const setupEventListeners = () => {
   elements.inputBtn.addEventListener('click', addItem);
@@ -11,18 +17,21 @@ const setupEventListeners = () => {
   });
 };
 
-// const natalia = new Expense(1, 1992, 'Developer');
-//1.Get the field input data
+const updateBudget = function() {
+  calculateBudget();
+  let budget = getBudget();
+  console.log(budget);
+};
+
 let input, newItem;
 const addItem = () => {
   const input = getInput();
-  newItem = addValues(input.type, input.desc, input.value);
-  addListItem(newItem, input.type);
+  if (input.desc !== '' && input.value > 0) {
+    newItem = addValues(input.type, input.desc, input.value);
+    addListItem(newItem, input.type);
+    clearFields();
+    updateBudget();
+  }
 };
-//2.Add the item to the budget controller
-
-//3.Add the item to the UI
-//4.Calculate the budget
-//5.Display the budget on the UI
 
 setupEventListeners();
