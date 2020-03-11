@@ -31,7 +31,6 @@ const setupEventListeners = () => {
 const updateBudget = function() {
   calculateBudget();
   let budget = getBudget();
-  console.log(budget);
   displayBudget(budget);
 };
 
