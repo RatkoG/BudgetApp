@@ -4,14 +4,14 @@ import {
   elements,
   addListItem,
   clearFields,
-  displayBudget
+  displayBudget,
+  deleteListItem
 } from './uiController';
 import {
-  Expense,
-  Income,
   addValues,
   calculateBudget,
-  getBudget
+  getBudget,
+  deleteValues
 } from './budgetController';
 
 const setupEventListeners = () => {
@@ -21,6 +21,7 @@ const setupEventListeners = () => {
       addItem();
     }
   });
+  elements.inputList.addEventListener('click', deleteItem);
 };
 
 const updateBudget = function() {
@@ -40,6 +41,20 @@ const addItem = () => {
     updateBudget();
   }
 };
+
+const deleteItem = function(e) {
+  let itemID, splitID, type, ID;
+  itemID = e.target.parentNode.parentNode.id;
+  if (itemID) {
+    splitID = itemID.split('-');
+    type = splitID[0];
+    ID = parseInt(splitID[1]);
+    deleteValues(type, ID);
+    deleteListItem(itemID);
+    updateBudget();
+  }
+};
+
 displayBudget({
   budget: 0,
   totalIn: 0,

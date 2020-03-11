@@ -7,7 +7,9 @@ export const elements = {
   budgetLabel: document.querySelector('.budget__value'),
   incomeLabel: document.querySelector('.budget__income--value'),
   expensesLabel: document.querySelector('.budget__expenses--value'),
-  percentageLabel: document.querySelector('.budget__expenses--percentage')
+  percentageLabel: document.querySelector('.budget__expenses--percentage'),
+  deleteBtn: '.item__delete--btn',
+  item: '.panel__item'
 };
 
 export const getInput = () => {
@@ -21,7 +23,7 @@ export const getInput = () => {
 export const addListItem = (obj, type) => {
   const myHTML = `<div class="panel__item panel__item-${
     type === 'inc' ? 'income' : 'expense'
-  }" id="income-${obj.id}">
+  }" id="${type === 'inc' ? 'inc' : 'exp'}-${obj.id}">
  	<div class="panel__item__details">
 		<div class="panel__item__details-name">${obj.description}</div>
   </div>
@@ -52,4 +54,9 @@ export const displayBudget = function(obj) {
   } else {
     elements.percentageLabel.textContent = '---';
   }
+};
+
+export const deleteListItem = function(selectorID) {
+  const element = document.getElementById(selectorID);
+  element.closest('.panel__item').remove();
 };

@@ -13,7 +13,7 @@ export class Income {
   }
 }
 
-export const data = {
+export let data = {
   allValues: {
     exp: [],
     inc: []
@@ -70,4 +70,15 @@ export const getBudget = function() {
     totalExp: data.total.exp,
     percentage: data.percentage
   };
+};
+export const deleteValues = function(type, id) {
+  let ids = data.allValues[type].map(function(current) {
+    return current.id;
+  });
+
+  let index = ids.indexOf(id);
+
+  if (index !== -1) {
+    data.allValues[type].splice(index, 1);
+  }
 };
