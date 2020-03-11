@@ -5,7 +5,8 @@ import {
   addListItem,
   clearFields,
   displayBudget,
-  deleteListItem
+  deleteListItem,
+  displayPercentages
 } from './uiController';
 import {
   addValues,
@@ -36,7 +37,7 @@ const updateBudget = function() {
 const updatePercentages = function() {
   calculatePercentages();
   let percentages = getPercentage();
-  console.log(percentages);
+  displayPercentages(percentages);
 };
 
 let input, newItem;
