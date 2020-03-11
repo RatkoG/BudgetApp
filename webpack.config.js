@@ -8,11 +8,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: ['babel-polyfill', './src/js/app.js'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: 'js/bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './docs'
   },
   plugins: [
     new HtmlWebpackPlugin({
