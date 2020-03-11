@@ -11,7 +11,9 @@ import {
   addValues,
   calculateBudget,
   getBudget,
-  deleteValues
+  deleteValues,
+  calculatePercentages,
+  getPercentage
 } from './budgetController';
 
 const setupEventListeners = () => {
@@ -31,6 +33,12 @@ const updateBudget = function() {
   displayBudget(budget);
 };
 
+const updatePercentages = function() {
+  calculatePercentages();
+  let percentages = getPercentage();
+  console.log(percentages);
+};
+
 let input, newItem;
 const addItem = () => {
   const input = getInput();
@@ -39,6 +47,7 @@ const addItem = () => {
     addListItem(newItem, input.type);
     clearFields();
     updateBudget();
+    updatePercentages();
   }
 };
 
@@ -52,6 +61,7 @@ const deleteItem = function(e) {
     deleteValues(type, ID);
     deleteListItem(itemID);
     updateBudget();
+    updatePercentages();
   }
 };
 

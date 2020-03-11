@@ -3,6 +3,15 @@ export class Expense {
     this.id = id;
     this.description = description;
     this.value = value;
+    this.percentage = -1;
+  }
+  calcPercentage(totalIncome) {
+    totalIncome > 0
+      ? (this.percentage = Math.round((this.value / totalIncome) * 100))
+      : (this.percentage = -1);
+  }
+  getPercentage() {
+    return this.percentage;
   }
 }
 export class Income {
@@ -62,7 +71,11 @@ export const calculateBudget = function() {
     data.percentage = -1;
   }
 };
-
+export const calculatePercentages = function() {
+  data.allValues.exp.forEach(function(current) {
+    current.calcPercentage(data.total.inc);
+  });
+};
 export const getBudget = function() {
   return {
     budget: data.budget,
@@ -70,6 +83,12 @@ export const getBudget = function() {
     totalExp: data.total.exp,
     percentage: data.percentage
   };
+};
+export const getPercentage = function() {
+  let allPerc = data.allValues.exp.map(function(current) {
+    return current.getPercentage();
+  });
+  return allPerc;
 };
 export const deleteValues = function(type, id) {
   let ids = data.allValues[type].map(function(current) {
