@@ -1,5 +1,6 @@
 import '../sass/main.scss';
 import {
+  displayDate,
   getInput,
   elements,
   addListItem,
@@ -72,4 +73,5 @@ displayBudget({
   totalExp: 0,
   percentage: -1
 });
+displayDate();
 setupEventListeners();

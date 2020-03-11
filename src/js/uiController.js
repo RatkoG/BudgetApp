@@ -7,6 +7,7 @@ export const elements = {
   budgetLabel: document.querySelector('.budget__value'),
   incomeLabel: document.querySelector('.budget__income--value'),
   expensesLabel: document.querySelector('.budget__expenses--value'),
+  dateLabel: document.querySelector('.budget__month'),
   percentageLabel: document.querySelector('.budget__expenses--percentage'),
   deleteBtn: '.item__delete--btn',
   item: '.panel__item',
@@ -97,4 +98,26 @@ export const displayPercentages = function(percentages) {
 export const deleteListItem = function(selectorID) {
   const element = document.getElementById(selectorID);
   element.closest('.panel__item').remove();
+};
+
+export const displayDate = function() {
+  let now = new Date();
+  let year = now.getFullYear();
+  let month = now.getMonth();
+  let months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'June',
+    'August',
+    'September',
+    'October',
+    'Novemberf',
+    'Deceber'
+  ];
+
+  elements.dateLabel.textContent = months[month] + ' ' + year;
 };
