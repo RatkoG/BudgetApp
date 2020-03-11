@@ -9,13 +9,7 @@ export const elements = {
   expensesLabel: document.querySelector('.budget__expenses--value'),
   percentageLabel: document.querySelector('.budget__expenses--percentage'),
   deleteBtn: '.item__delete--btn',
-  item: '.panel__item',
-  percentages: '.panel__item__value-percentage'
-};
-const nodeListForEach = function(list, callback) {
-  for (let i = 0; i < list.length; i++) {
-    callback(list[i], i);
-  }
+  item: '.panel__item'
 };
 
 export const getInput = () => {
@@ -35,7 +29,6 @@ export const addListItem = (obj, type) => {
   </div>
   <div class="panel__item__value">
  <div class="panel__item__value-number">${obj.value}</div>
-${type === 'exp' ? '<div class="panel__item__value-percentage"></div>' : ''}
 </div>
 	<button class="item__delete--btn">
 			<i class="ion-ios-close-outline"></i>
@@ -63,16 +56,6 @@ export const displayBudget = function(obj) {
   }
 };
 
-export const displayPercentages = function(percentages) {
-  const fields = document.querySelectorAll(elements.percentages);
-  nodeListForEach(fields, function(current, index) {
-    if (percentages[index] > 0) {
-      current.textContent = percentages[index] + '%';
-    } else {
-      current.textContent = '---';
-    }
-  });
-};
 export const deleteListItem = function(selectorID) {
   const element = document.getElementById(selectorID);
   element.closest('.panel__item').remove();
