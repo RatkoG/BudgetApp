@@ -2,13 +2,59 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Budget App</title>
-</head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="main.css" />
+  <title>Budget App</title>
+<link href="main.css" rel="stylesheet"></head>
 
 <body>
-	<h1>Testing Bundle</h1>
+  <div class="wrapper">
+    <div class="budget">
+      <div class="budget__month">%Month%</div>
+      <div class="budget__value">+ 2,345.64</div>
+      <div class="budget__title">
+        Available Budget
+      </div>
+      <div class="budget__panel">
+        <div class="budget__income ">
+          <div class="budget__income--text">Income</div>
+          <div class="right">
+            <div class="budget__income--value">+ 4,300.00</div>
+            <div class="budget__income--percentage">&nbsp;</div>
+          </div>
+        </div>
+        <select class="budget__type">
+          <option value="inc" selected>+</option>
+          <option value="exp">-</option>
+        </select>
+        <div class="budget__expenses ">
+          <div class="budget__expenses--text">Expenses</div>
+          <div class="right ">
+            <div class="budget__expenses--value">- 1,954.36</div>
+            <div class="budget__expenses--percentage">45%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="add">
+      <div class="add__container">
+        <input type="text" class="add__description" placeholder="Add description" />
+        <input type="number" class="add__value" placeholder="Value" />
+        <button class="add__btn">
+          <i class="ion-ios-checkmark-outline"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="panel">
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
 <script type="text/javascript" src="js/bundle.js"></script></body>
 
 </html>
