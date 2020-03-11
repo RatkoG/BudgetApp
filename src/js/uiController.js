@@ -12,6 +12,24 @@ export const elements = {
   item: '.panel__item',
   percentages: '.panel__item__value-percentage'
 };
+const formatNumber = function(num, type) {
+  let numSplit, int, dec;
+
+  num = Math.abs(num);
+  num = num.toFixed(2);
+
+  numSplit = num.split('.');
+
+  int = numSplit[0];
+
+  if (int.length > 3) {
+    int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+  }
+
+  dec = numSplit[1];
+
+  return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
+};
 const nodeListForEach = function(list, callback) {
   for (let i = 0; i < list.length; i++) {
     callback(list[i], i);
@@ -34,7 +52,7 @@ export const addListItem = (obj, type) => {
 		<div class="panel__item__details-name">${obj.description}</div>
   </div>
   <div class="panel__item__value">
- <div class="panel__item__value-number">${obj.value}</div>
+ <div class="panel__item__value-number">${formatNumber(obj.value, type)}</div>
 ${type === 'exp' ? '<div class="panel__item__value-percentage"></div>' : ''}
 </div>
 	<button class="item__delete--btn">
@@ -53,9 +71,12 @@ export const clearFields = function() {
 };
 
 export const displayBudget = function(obj) {
-  elements.budgetLabel.textContent = obj.budget;
-  elements.incomeLabel.textContent = obj.totalInc;
-  elements.expensesLabel.textContent = obj.totalExp;
+  let type;
+  obj.budget > 0 ? (type = 'inc') : (type = 'exp');
+  elements.budgetLabel.textContent = formatNumber(obj.budget, type);
+  elements.incomeLabel.textContent = formatNumber(obj.totalInc, 'inc');
+  elements.expensesLabel.textContent = formatNumber(obj.totalExp, 'exp');
+
   if (obj.percentage > 0) {
     elements.percentageLabel.textContent = obj.percentage + '%';
   } else {

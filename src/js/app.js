@@ -68,7 +68,7 @@ const deleteItem = function(e) {
 
 displayBudget({
   budget: 0,
-  totalIn: 0,
+  totalInc: 0,
   totalExp: 0,
   percentage: -1
 });
