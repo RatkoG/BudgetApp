@@ -54,7 +54,7 @@ const addItem = () => {
 
 const deleteItem = function(e) {
   let itemID, splitID, type, ID;
-  itemID = e.target.parentNode.parentNode.id;
+  itemID = e.target.parentNode.parentNode.parentNode.id;
   if (itemID) {
     splitID = itemID.split('-');
     type = splitID[0];

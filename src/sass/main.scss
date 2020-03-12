@@ -130,10 +130,10 @@ body {
   }
 
   &__btn {
-    font-size: 35px;
+    width: 35px;
     background: none;
     border: none;
-    color: $main;
+    fill: $main;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
@@ -185,10 +185,9 @@ body {
 
 .item__delete--btn {
   display: none;
-  font-size: 22px;
-  background: none;
   border: none;
-  color: $red;
+  width: 18px;
+  fill: $red;
   cursor: pointer;
   outline: none;
 }
