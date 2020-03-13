@@ -13,7 +13,7 @@ export const elements = {
   item: '.panel__item',
   percentages: '.panel__item__value-percentage'
 };
-const formatNumber = function(num, type) {
+const formatNumber = (num, type) => {
   let numSplit, int, dec;
 
   num = Math.abs(num);
@@ -63,7 +63,7 @@ ${type === 'exp' ? '<div class="panel__item__value-percentage"></div>' : ''}
   const myFragment = document.createRange().createContextualFragment(myHTML);
   document.querySelector('.panel').appendChild(myFragment);
 };
-export const clearFields = function() {
+export const clearFields = () => {
   let fields = document.querySelectorAll('.add__description, .add__value');
   fields = Array.from(fields).forEach(field => {
     field.value = '';
@@ -100,7 +100,7 @@ export const deleteListItem = function(selectorID) {
   element.closest('.panel__item').remove();
 };
 
-export const displayDate = function() {
+export const displayDate = () => {
   let now = new Date();
   let year = now.getFullYear();
   let month = now.getMonth();

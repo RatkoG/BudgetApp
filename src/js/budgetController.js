@@ -61,7 +61,7 @@ const calculateTotal = function(type) {
   data.total[type] = sum;
 };
 
-export const calculateBudget = function() {
+export const calculateBudget = () => {
   calculateTotal('exp');
   calculateTotal('inc');
   data.budget = data.total.inc - data.total.exp;
@@ -71,12 +71,12 @@ export const calculateBudget = function() {
     data.percentage = -1;
   }
 };
-export const calculatePercentages = function() {
+export const calculatePercentages = () => {
   data.allValues.exp.forEach(function(current) {
     current.calcPercentage(data.total.inc);
   });
 };
-export const getBudget = function() {
+export const getBudget = () => {
   return {
     budget: data.budget,
     totalInc: data.total.inc,
@@ -84,7 +84,7 @@ export const getBudget = function() {
     percentage: data.percentage
   };
 };
-export const getPercentage = function() {
+export const getPercentage = () => {
   let allPerc = data.allValues.exp.map(function(current) {
     return current.getPercentage();
   });

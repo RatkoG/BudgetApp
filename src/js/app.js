@@ -28,23 +28,22 @@ const setupEventListeners = () => {
   elements.inputList.addEventListener('click', deleteItem);
 };
 
-const updateBudget = function() {
+const updateBudget = () => {
   calculateBudget();
   let budget = getBudget();
   displayBudget(budget);
 };
 
-const updatePercentages = function() {
+const updatePercentages = () => {
   calculatePercentages();
   let percentages = getPercentage();
   displayPercentages(percentages);
 };
 
-let input, newItem;
 const addItem = () => {
   const input = getInput();
   if (input.desc !== '' && input.value > 0) {
-    newItem = addValues(input.type, input.desc, input.value);
+    let newItem = addValues(input.type, input.desc, input.value);
     addListItem(newItem, input.type);
     clearFields();
     updateBudget();
@@ -52,7 +51,7 @@ const addItem = () => {
   }
 };
 
-const deleteItem = function(e) {
+const deleteItem = e => {
   let itemID, splitID, type, ID;
   itemID = e.target.parentNode.parentNode.parentNode.id;
   if (itemID) {
